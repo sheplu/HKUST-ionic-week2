@@ -177,6 +177,17 @@ angular.module('conFusion.controllers', [])
         $scope.popover.hide();
     }
 
+    $scope.commentData = {};
+    $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+
+    $scope.doComment = function() {
+      $scope.mycomment = $scope.commentData;
+      $scope.mycomment.date = new Date().toISOString();
+
+      $scope.dish.comments.push($scope.commentData);
+      $scope.modal.hide();
+    }
+
     $ionicPopover.fromTemplateUrl('templates/dish-detail-popover.html', {
       scope: $scope
     }).then(function(popover) {
@@ -184,7 +195,7 @@ angular.module('conFusion.controllers', [])
     });
 
     $scope.openPopover = function($event) {
-    $scope.popover.show($event);
+      $scope.popover.show($event);
     };
     $scope.closePopover = function() {
       $scope.popover.hide();
@@ -210,6 +221,7 @@ angular.module('conFusion.controllers', [])
     });
     $scope.openModal = function() {
       $scope.modal.show();
+      $scope.popover.hide();
     };
     $scope.closeModal = function() {
       $scope.modal.hide();
