@@ -10,17 +10,17 @@
       <div class="list">
         <label class="item item-input item-select">
           <span class="input-label">Rating</span>
-            <select>
-                <option ng-repeat="n in [1,2,3,4,5,6]" value="{{n}}">{{n}}</option>
+            <select ng-model="commentData.rating">
+                <option ng-repeat="n in [1,2,3,4,5]" value="{{n}}">{{n}}</option>
             </select>
         </label>
         <label class="item item-input">
           <span class="input-label">Name</span>
-          <input type="text" >
+          <input type="text" ng-model="commentData.author">
         </label>
         <label class="item item-input">
           <span class="input-label">Comment</span>
-          <textarea ></textarea>
+          <textarea ng-model="commentData.comment"></textarea>
         </label>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Send</button>
